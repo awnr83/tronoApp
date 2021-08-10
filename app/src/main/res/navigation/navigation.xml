@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/personajesFragment">
+
+    <fragment
+        android:id="@+id/personajesFragment"
+        android:name="com.moappdev.solutions.tronoapp.personajes.PersonajesFragment"
+        android:label="fragment_personajes"
+        tools:layout="@layout/fragment_personajes" >
+        <action
+            android:id="@+id/action_personajesFragment_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleFragment"
+        android:name="com.moappdev.solutions.tronoapp.detalle.DetalleFragment"
+        android:label="fragment_detalle"
+        tools:layout="@layout/fragment_detalle" >
+        <action
+            android:id="@+id/action_detalleFragment_to_personajesFragment"
+            app:destination="@id/personajesFragment" />
+        <argument
+            android:name="personaje"
+            app:argType="com.moappdev.solutions.tronoapp.network.Thrones" />
+        <action
+            android:id="@+id/action_detalleFragment_to_houseDialog"
+            app:destination="@id/houseDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/houseDialog"
+        android:name="com.moappdev.solutions.tronoapp.detalle.dialogo.HouseDialog"
+        android:label="HouseDialog">
+        <argument
+            android:name="item"
+            app:argType="com.moappdev.solutions.tronoapp.network.House" />
+        <action
+            android:id="@+id/action_houseDialog_to_detalleFragment"
+            app:destination="@id/detalleFragment" />
+    </dialog>
+</navigation>
